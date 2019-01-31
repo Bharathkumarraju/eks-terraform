@@ -73,16 +73,3 @@ module "eks" {
   map_accounts                         = "${var.map_accounts}"
   map_accounts_count                   = "${var.map_accounts_count}"
 }
-
-resource "aws_iam_policy" "ingress_alb" {
-  count = "${var.add_ingress_policy ? 1 : 0}"
-  name = "IngressController-IAM-Policy"
-  description = "Ingress Controller IAM Policy for ALB"
-  policy      = "${file("policy/ingresscontroller.json")}"
-}
-
-resource "aws_iam_role_policy_attachment" "workers_ingress_policy" {
-  count = "${var.add_ingress_policy ? 1 : 0}"
-  role = "${module.eks.worker_iam_role_name}"
-  policy_arn = "${aws_iam_policy.ingress_alb.arn}"
-}

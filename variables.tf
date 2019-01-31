@@ -2,6 +2,9 @@ variable "region" {
   default = "us-west-2"
 }
 
+variable "add_kube2iam_policy" {
+  default = false
+}
 variable "add_ingress_policy" {
   default = false
 }
