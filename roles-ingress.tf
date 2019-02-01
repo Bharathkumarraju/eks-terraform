@@ -39,6 +39,6 @@ resource "aws_iam_policy" "ingresscontroller_policy" {
 
 resource "aws_iam_role_policy_attachment" "workers_ingresscontroller_policy" {
   count = "${var.add_ingress_policy ? 1 : 0}"
-  role = "${aws_iam_role.k8s_alb_controller_role.name}"
+  role = "${module.eks.worker_iam_role_name}"
   policy_arn = "${aws_iam_policy.ingresscontroller_policy.arn}"
 }

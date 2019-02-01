@@ -2,6 +2,17 @@ output "vpc_id" {
   description = "VPC ID of cluster"
   value = "${module.vpc.vpc_id}"
 }
+
+output "public_subnet_ids" {
+  description = "Public Subnet IDs of cluster"
+  value = "${module.vpc.public_subnets}"
+}
+
+output "private_subnet_ids" {
+  description = "Private Subnet IDs of cluster"
+  value = "${module.vpc.private_subnets}"
+}
+
 output "cluster_endpoint" {
   description = "Endpoint for EKS control plane."
   value       = "${module.eks.cluster_endpoint}"
