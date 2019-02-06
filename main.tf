@@ -73,3 +73,11 @@ module "eks" {
   map_accounts                         = "${var.map_accounts}"
   map_accounts_count                   = "${var.map_accounts_count}"
 }
+
+module "kube2iam" {
+  source = "./kube2iam"
+  region = "${var.region}"
+  add_kube2iam = true
+  eks_worker_iam_role_arn = "${module.eks.worker_iam_role_arn}"
+  eks_worker_iam_role_name = "${module.eks.worker_iam_role_name}"
+}
