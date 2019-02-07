@@ -1,5 +1,10 @@
 terraform {
   required_version = ">= 0.11.8"
+  backend "s3" {
+    bucket = "${var.state_bucket}"
+    key    = "${var.cluster_name}/"
+    region  = "${var.state_bucket_region}"
+  }
 }
 
 provider "aws" {

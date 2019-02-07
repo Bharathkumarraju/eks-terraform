@@ -2,6 +2,18 @@ variable "region" {
   default = "us-west-2"
 }
 
+variable "state_bucket" {
+  type = "string"
+}
+
+variable "state_bucket_region" {
+  type = "string"
+}
+
+variable "cluster_name" {
+  type = "string"
+}
+
 variable "map_accounts" {
   description = "Additional AWS account numbers to add to the aws-auth configmap."
   type        = "list"
